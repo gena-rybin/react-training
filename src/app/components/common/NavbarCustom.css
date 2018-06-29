@@ -1,0 +1,22 @@
+.navbar-button{
+    border: none;
+    background-color: inherit;
+}
+.navbar-default {
+    background-color: #83c1d8;
+    border: none;
+    border-bottom: 1px solid #3c7692;
+}
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand{
+    color: white;
+}
+.navbar {
+    border-radius: 0;
+}
+
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0;
+    }
+}

@@ -1,0 +1,11 @@
+export const CREATE_DIRECTORY='';
+export const UPDATE_DIRECTORY='';
+export const DELETE_DIRECTORY='';
+export const GET_ALL_NOTICES='';
+export const CREATE_NOTICE='';
+export const UPDATE_NOTICE='';
+export const DELETE_NOTICE='';
+export const DND_NOTICES='';
+export const BACK_END_SERVER='http://localhost:3000';
+export const STARTING_INDEX=1;
+export const NOTICES_FAIL='';

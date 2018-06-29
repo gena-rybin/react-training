@@ -1,0 +1,52 @@
+.action-container {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    padding: 24px;
+}
+.action-container svg{
+    margin-bottom: 8px;
+}
+.action-container:hover{
+    /*border: 1px solid #83c1d8;*/
+    /*margin: -1px;*/
+    background-color: #83c1d8;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #ffffff;
+}
+.action-container:not(:hover){
+    background-color: inherit;
+    transition: 0.5s;
+}
+
+.action-container:hover #addButton polygon,
+.action-container:hover #editButton path,
+.action-container:hover #deleteButton path {
+    fill: #ffffff;
+    transition: 0.3s;
+}
+.action-container:not(:hover) svg polygon {
+    transition: 0.5s;
+}
+
+.action-container:not(:hover) #addButton polygon {
+    fill: #4fd676;
+}
+.action-container:not(:hover) #editButton path {
+    fill: orange;
+}
+.action-container:not(:hover) #deleteButton path {
+    fill: tomato;
+}
+
+
+/*img:not(:hover) {*/
+    /*transition: 2s;*/
+    /*filter: saturate(0%);*/
+    /*-webkit-filter: saturate(0%);*/
+/*}*/
+/*img:hover {*/
+    /*transition: 1s;*/
+/*}*/
+

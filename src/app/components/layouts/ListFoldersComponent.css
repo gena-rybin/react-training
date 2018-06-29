@@ -1,0 +1,61 @@
+/*http://javascript.ru/ui/tree+++*/
+
+.Container {
+    padding: 0;
+    margin: 0;
+}
+.Container li {
+    list-style-type: none;
+    cursor: pointer;
+}
+.Container li:hover{
+    /*border: 1px solid #83c1d8;*/
+    /*margin: -1px;*/
+    background-color: rgba(131, 193, 216, 0.35);
+    border-radius: 4px;
+    transition: 0.5s;
+    /*color: #ffffff;*/
+}
+.Container li:not(:hover){
+    background-color: inherit;
+    transition: 0.5s;
+}
+.Container li.selected{
+    background-color: #83c1d8;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+
+/* иконка скрытого/раскрытого поддерева или листа
+    сами иконки идут дальше, здесь общие свойства
+ */
+.Expand {
+    width: 18px;
+    height: 18px;
+    /* принцип двухколоночной верстки. */
+    /* float:left и width дива Expand + margin-left дива Content */
+    float: left;
+}
+
+/* содержание (заголовок) узла */
+.Content {
+    /* чтобы не налезать на Expand */
+    margin-left:18px;
+    /* высота заголовка - как минимум равна Expand
+        Т.е правая колонка всегда выше или равна левой.
+        Иначе нижний float будет пытаться разместиться на получившейся ступеньке
+    */
+    min-height: 18px;
+}
+
+* html .Content {
+    height: 18px; /* аналог min-height для IE6 */
+}
+.Expand.ExpandOpen {
+    background-image: url(../../../assets/images/folder-opened.svg);
+}
+.Expand.ExpandClosed {
+    background-image: url(../../../assets/images/folder-closed.svg);
+}
+
