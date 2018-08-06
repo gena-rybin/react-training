@@ -60,7 +60,7 @@ class ListFoldersContainer extends Component {
                         //     this.props.toggleCompleteTodo(folder);
                         // }}
                     >
-                        *{folder.id}*  {folder.name}, parent - {folder.parentId}
+                        *{folder.id}  {folder.name}, p - {folder.parentId}
                     </li>
                 )}
             </div>

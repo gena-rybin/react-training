@@ -25,24 +25,23 @@ function ajaxCall(callAPI) {
 }
   
 function defaultAjaxCall(dispatch, type, type_fail, callAPI, props) {
+
     const successHandler = response => {
-        console.log(2222, response);
         dispatch({
 			type: type,
 			payload: response.data,
 			props: props
 		})
-	};
+	}
 
 	const errorHandler = error => {
-        // console.log(error);
-        return dispatch({
-			type: type_fail, 
-			isError: true,
-			request: type,
-			errorMessage: (error+'').split('Error: ')[1]
-		})
-	};
+        dispatch => {dispatch({
+            type: type_fail,
+            isError: true,
+            request: type,
+            errorMessage: (error+'').split('Error: ')[1]
+        })}
+	}
 
 	ajaxCall(callAPI)
 		.then(response => successHandler(response))
@@ -64,17 +63,18 @@ export const getAllDirectoriesAction = () => {
 
 // create directory on server
 export const createDirectoryAction = (props) => {
-	return function(dispatch) {
+    console.log(props);
+    return function(dispatch) {
 		const parentId = (props.parentId === undefined) ? 1 : props.parentId;
 
-		defaultAjaxCall(dispatch, 
+		defaultAjaxCall(dispatch,
 						CREATE_DIRECTORY,
             			REQUEST_FAILED,
-						{	
+						{
 							method: 'POST',
 							url: `${BACK_END_SERVER}/directories`,
 							data: {
-								parentId: parentId,
+                                parentId: parentId,
 								name: props.name
 							}
 						});
@@ -84,19 +84,34 @@ export const createDirectoryAction = (props) => {
 
 // delete directory on server
 export const deleteDirectoryAction = (props) => {
-	return function(dispatch) {
-		axios.delete(`${BACK_END_SERVER}/directories/${props.id}`)
-			.then(function (response) {
-				dispatch(getAllDirectoriesAction());
-			})
-			.catch(function (error) {
-				dispatch({
-					type: REQUEST_FAILED,
-					isError: true,
-					request: DELETE_DIRECTORY
-				});
-			});
-	}
+	// return function(dispatch) {
+	// 	axios.delete(`${BACK_END_SERVER}/directories/${props.id}`)
+	// 		.then(function (response) {
+	// 			dispatch(getAllDirectoriesAction());
+	// 		})
+	// 		.catch(function (error) {
+	// 			dispatch({
+	// 				type: REQUEST_FAILED,
+	// 				isError: true,
+	// 				request: DELETE_DIRECTORY
+	// 			});
+	// 		});
+	// }
+
+    return function(dispatch) {
+        // const parentId = (props.parentId === undefined) ? 1 : props.parentId;
+
+        defaultAjaxCall(dispatch,
+            DELETE_DIRECTORY,
+            REQUEST_FAILED,
+            {
+                method: 'DELETE',
+                url: `${BACK_END_SERVER}/directories/${props.id}`,
+                data: ''
+            });
+
+    }
+
 }
 
 // update directory on server

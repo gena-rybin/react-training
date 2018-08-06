@@ -4,7 +4,7 @@ export const ArrangeTreeHandler = data => {
     let sortedTree = SortTreeHandler(data);
     let relatedTree = AddParentChildRelationHandler(sortedTree);
     let childrensTree = FindChildrensForFoldersHandler(relatedTree);
-    console.log(childrensTree);
+    // console.log(childrensTree);
 
     return childrensTree;
 };
@@ -45,12 +45,12 @@ export const AddParentChildRelationHandler = data => {
 
 export const FindChildrensForFoldersHandler = data => {
     let tempArray = JSON.parse(JSON.stringify(data));
-    let isFound = false;
+    // let isFound = false;
     tempArray.forEach(child => child['childrens']=[]);
 
     tempArray.forEach(folder => {
         let childrenId = FindChildrenId(folder.id, tempArray);
-        isFound = +folder.id === childrenId;
+        // isFound = +folder.id === childrenId;
         folder.childrens.push(childrenId);
         // while (isFound) {
         //     childrenId = FindChildrenId(folder.id, tempArray);

@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import './ActionBar.css';
+import {bindActionCreators} from "redux";
+import {modalVisibilityCreateNewFolderAction} from "../../redux/actions";
+import {modalVisibilityConfirmationDialogAction} from "../../redux/actions";
+import {connect} from "react-redux";
 
-export default class ActionBar extends Component {
+class ActionBar extends Component {
 
     render() {
         return (
             <div id={'actionBar'}>
-                <div className={'action-container'}>
+                <div className={'action-container'}
+                     onClick={() => {
+                         this.props.modalVisibilityConfirmationDialog(false);
+                         this.props.modalVisibilityCreateNewFolder(true);}}>
                     <svg id={'addButton'} xmlns="http://www.w3.org/2000/svg" xmlnsXlink={'http://www.w3.org/1999/xlink'} version="1.1" x="0px" y="0px" viewBox="0 0 42 42"
                          style={{'enableBackground':'new 0 0 42 42'}} xmlSpace={'preserve'} width="40px" height="40px">
                         <polygon fill="green" points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "/>
@@ -26,7 +33,11 @@ export default class ActionBar extends Component {
                     <br/>
                     <span>Edit</span>
                 </div>
-                <div className={'action-container'}>
+                <div className={'action-container'}
+                     onClick={() => {
+                         this.props.modalVisibilityCreateNewFolder(false);
+                         this.props.modalVisibilityConfirmationDialog(true);
+                     }}>
                     <svg id={'deleteButton'} xmlns="http://www.w3.org/2000/svg" xmlnsXlink={'http://www.w3.org/1999/xlink'} version="1.1" x="0px" y="0px" viewBox="0 0 512 512"
                          style={{'enableBackground':'new 0 0 512 512'}} xmlSpace={'preserve'} width="40px" height="40px">
                         <g><g>
@@ -47,3 +58,19 @@ export default class ActionBar extends Component {
     }
 
 }
+
+function mapStateToProps(state) {
+    // console.log('*** ActionBar-Component...', state);
+    return {
+        show: state.isVisibleModalNewFolder,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        modalVisibilityCreateNewFolder: bindActionCreators(modalVisibilityCreateNewFolderAction, dispatch),
+        modalVisibilityConfirmationDialog: bindActionCreators(modalVisibilityConfirmationDialogAction, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActionBar);

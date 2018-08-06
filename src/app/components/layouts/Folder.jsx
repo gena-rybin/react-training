@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-// import ListFoldersContainer from '../containers/ListFoldersContainer';
-// import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-// import {getAllDirectoriesAction} from '../../shared/apiService';
-import {STARTING_INDEX} from "../../constants";
+import {setSelectedFolderAction} from '../../redux/actions/index';
 import './Folder.css';
+import {bindActionCreators} from "redux";
 
 
 class Folder extends Component {
@@ -13,7 +11,8 @@ class Folder extends Component {
         const {folder} = this.props;
 
         return (
-            <li style={{marginLeft: folder.deep ? folder.deep*18+'px' : '2px'}}
+            <li style={{marginLeft: folder.deep ? folder.deep*18+'px' : '2px',
+                        paddingLeft: '4px'}}
                 id={'f_'+folder.id}
                         // folder.selected ? 'selected' : ''}
                 onClick={() => {
@@ -21,6 +20,7 @@ class Folder extends Component {
                     this.toggleFolderIcon();
                     this.toggleClassSelected(this);
                     this.toggleClassExpandFolderIcon(this);
+                    this.setSelectedFolderHandler(this.props.folder);
                     //     this.props.selected(folder);
                     //     this.props.clickedTodo(folder);
                     //     this.props.toggleCompleteTodo(folder);
@@ -33,14 +33,17 @@ class Folder extends Component {
     }
 
     toggleFolderIcon = () => {
-        console.log(222222);
+    };
+
+    setSelectedFolderHandler = (data) => {
+        this.props.setSelectedFolder(data);
     };
 
     toggleClassSelected = data => {
-        console.log(data);
+        // console.log(data);
         const li = window.document.getElementById('f_'+data.props.folder.id);
-        const hasClass = li.classList.contains('selected');
-        console.log(li);
+        // const hasClass = li.classList.contains('selected');
+        // console.log(li);
         const liCollection = window.document.getElementsByClassName('Container')["0"].childNodes;
         for (let i=0; i<liCollection.length; i++) {
             liCollection[i].classList.remove('selected');
@@ -53,7 +56,7 @@ class Folder extends Component {
         const isOpened = divExpand.classList.contains('ExpandOpen');
 
         isOpened ? this.toggleOpenToClosed(divExpand) : this.toggleClosedToOpen(divExpand);
-        console.dir(divExpand.classList);
+        // console.dir(divExpand.classList);
     };
 
     toggleOpenToClosed = divExpand => {
@@ -76,7 +79,7 @@ class Folder extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        // getAllDirectories: bindActionCreators(getAllDirectoriesAction, dispatch),
+        setSelectedFolder: bindActionCreators(setSelectedFolderAction, dispatch),
         // saveFoldersAction: bindActionCreators(saveFoldersAction, dispatch),
         // selected: bindActionCreators(selectedAction, dispatch),
         // deleteTodo: bindActionCreators(deleteTodoAction, dispatch),

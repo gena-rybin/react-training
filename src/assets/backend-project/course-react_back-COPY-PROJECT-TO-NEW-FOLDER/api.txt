@@ -17,6 +17,3 @@ PUT     /notices/:id
 Update notice (can be user for changing position)
 DELETE  /notices/:id
 Delete notice
-
-
-npm start --host 0.0.0.0 --port 80

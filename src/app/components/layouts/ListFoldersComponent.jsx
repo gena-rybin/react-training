@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import ListFoldersContainer from '../containers/ListFoldersContainer';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {getAllDirectoriesAction} from '../../shared/apiService';
@@ -10,7 +9,7 @@ import Folder from './Folder';
 
 class ListFolders extends Component {
     componentWillMount() {
-        console.log(1111, this.props);
+        // console.log(1111, this.props);
         this.props.getAllDirectories();
     }
 
@@ -20,7 +19,7 @@ class ListFolders extends Component {
         if (folders) {
             folders.style.minHeight = (actionBarV && +actionBarV.offsetHeight>10) ? +actionBarV.offsetHeight+'px' : '120px';
         }
-        console.dir(folders);
+        // console.dir(folders);
     }
 
     render() {
@@ -38,22 +37,7 @@ class ListFolders extends Component {
                     {this.props.folders.map((folder) => {
                         if (+folder.id>STARTING_INDEX) {
                             return <Folder key={folder.id} folder={folder}/>
-                            // return (<li key={folder.id}
-                            //     style={{marginLeft: folder.deep ? folder.deep*18+'px' : '2px'}}
-                            //     // folder.selected ? 'selected' : ''}
-                            //     onClick={() => {
-                            //     //     console.log('selection clicked');
-                            //         this.toggleFolderIcon();
-                            //     //     this.props.selected(folder);
-                            //     //     this.props.clickedTodo(folder);
-                            //     //     this.props.toggleCompleteTodo(folder);
-                            //     }}
-                            // >
-                            //     <div className="Expand ExpandOpen"></div>
-                            //     <div className="Content">*{folder.id}*  {folder.name}, parent - {folder.parentId}</div>
-                            //
-                            // </li>)
-                        }
+                        } else return true;
                     })}
                 </ul>
             </div>
@@ -68,9 +52,9 @@ class ListFolders extends Component {
 
 
 function mapStateToProps(state) {
-    console.log('*** component...', state.folders.data);
+    // console.log('*** component...', state);
     return {
-        folders: state.folders.data,
+        folders: state.folders.folders,
     }
 }
 

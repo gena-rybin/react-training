@@ -1,31 +1,3 @@
-https://edu.dataart.com/courses/course-v1:Front-End+FR_08+2015/courseware/276b11f096824986bd5fb95a321a2782/bea15f5ba7934963bd13cc2a140fcc39/
-
-Practical Task
- Click to addBookmark this page
-The name of the application is “Note Manager”. The application must help users create, edit, and delete their personal notes, and maintain the structure of folders and tags.
-
-The practical project must be generated using the create-react-app tool.
-
-FUNCTIONAL REQUIREMENTS:
-The “Search” function can be switched to “simple” and “advanced” modes. In “simple” mode the search goes only through the names of notes, and in “advanced” mode can search through the content of notes and tags.
- “Search” must support autocomplete (suggestion - React Autocomplete).  Expected behavior: search component searches for notes everywhere and doesn't depend on selected folder. After clicking on suggestion user is redirected to search results page.
-The order of the notes inside a folder can be changed by using drag-and-drop (suggestion - React DnD).
-Insightful tooltips should appear when a user hovers over any element of the interface.
-Names of notes and folders must be editable inline.
-After clicking on a note icon, the details of that note be displayed with full text and tags.
-Root folder: Please have a look at mockup. Application should support creation of any number of folders at any level, including the first visible layer (or level). On mockup there are multiple folders on the root level (first level): Corporative, Private, Other Activities etc. Expected behavior: I can create any number of folders on any level including the first one.
-Tags Autocomplete: If I add tag with name "tag1" then I go to the next note and when I start typing 'ta' I should see suggestion list with already existing 'tag1'.
-Minimize the usage of 'state' in components by adding a Flux implementation to the solution. Provide a description of every action or action creator and the tasks they perform (suggestion - Redux).
-OTHER REQUIREMENTS:
-The solution must utilize ES6 and have two build types: for production and development respectfully.
-React Hot Loader or react-transform-webpack-hmr should be used for development. It’s more convenient and it will burst your productivity.
-The solution must use an intelligent routing system in order to save the state of opened directories, search results and note details. It is necessary to handle 404 and 500 statuses (suggestion - React Router).
- Backend should be committed to repository. Package.json should have a command to run backend 'npm run server'. Please use provided node server without any modifications or small changes.
-The use of third-party components is permitted. Using new approaches to writing styles in React.js applications (CSS Modules / Radium (inline styles) / PostCSS) is a plus.
-
-=====================================================================================================
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
